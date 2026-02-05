@@ -1,0 +1,14 @@
+#main-content {
+    padding: 150px 20px;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+
+}
+
+#main-content>h1 {
+    font-size: 50px;
+    font-weight: 80;
+    word-spacing: 3px;
+    line-height: 50px;
+}

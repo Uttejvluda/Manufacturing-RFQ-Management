@@ -1,0 +1,98 @@
+<h1 align="center">Supplier List</h1>
+
+<span *ngIf="update; else elseBlock"> 
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Supplier Id</th>
+          <th>Supplier name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Location</th>
+          <th>Feedback</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input [(ngModel)]="newdata.supplier_id"></td>
+          <td><input [(ngModel)]="newdata.name" ></td> 
+          <td><input [(ngModel)]="newdata.email" ></td> 
+          <td><input [(ngModel)]="newdata.phone" ></td> 
+          <td><input [(ngModel)]="newdata.location" ></td>
+          <td><input [(ngModel)]="newdata.feedback" ></td> 
+          <td><button (click)="updateSupplier()" class="btn btn-success">Update</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" (click)="reload()">Clear</button>
+  </div>
+</span>
+<ng-template #elseBlock>
+  <div class="container">
+     <span *ngIf="!updateFeedback; else elseBlock1">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Supplier Id</th>
+            <th>Supplier name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Location</th>
+            <th>Feedback</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let supplier of suppliers;let i=index;">
+            <td>{{supplier.supplier_id}}</td>
+            <td>{{supplier.name}}</td>
+            <td>{{supplier.email}}</td>
+            <td>{{supplier.phone}}</td>
+            <td>{{supplier.location}}</td>
+            <td>{{supplier.feedback}}</td>
+            <td><button class="btn btn-secondary" (click)="updating(supplier)" >Edit</button></td> 
+            <td><button (click)="updatingFeedback(supplier)" class="btn btn-secondary" >Edit Feedback</button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input [(ngModel)]="newdata.name" required></td> 
+            <td><input [(ngModel)]="newdata.email" required></td> 
+            <td><input [(ngModel)]="newdata.phone" required></td> 
+            <td><input [(ngModel)]="newdata.location" required></td> 
+            <td><input [(ngModel)]="newdata.feedback" required></td>
+            <td><button type="button" (click)="addsupplier()" class="btn btn-success">Add</button></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </span>
+    <ng-template #elseBlock1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Supplier Id</th>
+            <th>Supplier name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Location</th>
+            <th>Feedback</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{newdata.supplier_id}}</td>
+            <td>{{newdata.name}}</td>
+            <td>{{newdata.email}}</td>
+            <td>{{newdata.phone}}</td>
+            <td>{{newdata.location}}</td>
+            <td><input [(ngModel)]="newdata.feedback" ></td>
+            <td><button (click)="updatefeedBack()" class="btn btn-success">Update Feedback</button></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" (click)="reload()">Clear</button>
+    </ng-template>
+  </div>
+</ng-template>
