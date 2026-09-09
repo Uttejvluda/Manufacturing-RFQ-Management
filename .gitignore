@@ -21,3 +21,7 @@
 "# OS files" 
 ".DS_Store" 
 "Thumbs.db" 
+"# Angular cache" 
+".angular/cache/" 
+"node_modules/" 
+"dist/" 
